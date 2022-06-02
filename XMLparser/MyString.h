@@ -26,7 +26,8 @@ public:
 	~MyString();
 
 	size_t getSize() const;
-
+	 
+	//mine
 	char* &c_str();
 	const char* c_str() const;
 
