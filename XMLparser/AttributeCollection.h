@@ -7,6 +7,9 @@ private:
 
 	Attribute** attributes;
 	MyString string;
+	MyString key;
+	MyString value;
+
 	size_t stringCapacity;
 	size_t count;
 	size_t capacity;
@@ -15,9 +18,8 @@ private:
 	void copyFrom(const AttributeCollection& other);
 	void resize();
 
-	int getAttributeStringLength(int index);//not written
+	/*int getAttributeStringLength(int index);*///not written
 	void add(Attribute* attribute);
-	void createString();
 
 public:
 
@@ -30,9 +32,10 @@ public:
 	/*char* ToString(); */
 	size_t getCount() const;
 
-	const char* getAttributeValue(const char* key) const;
-	bool setAttributeValue(const char* key, const char* value);
 
-	size_t findAttribute(const char* key);
-	bool deleteAttribute(const char* key);
+	MyString getAttributeValue(const MyString& key) const;
+	bool setAttributeValue(const MyString& key, const MyString& value);
+
+	//size_t findAttribute(const char* key);
+	//bool deleteAttribute(const char* key);
 };

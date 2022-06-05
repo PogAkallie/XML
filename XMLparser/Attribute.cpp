@@ -35,3 +35,13 @@ void Attribute::setValue(const XMLobject& textToSet)
 	this->getText(text) = temp;*/
 
 }
+
+MyString Attribute::getKey() const
+{
+	return key;
+}
+
+MyString Attribute::getValue() const
+{
+	return value;
+}

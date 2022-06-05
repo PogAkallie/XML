@@ -1,5 +1,7 @@
 #include "AttributeCollection.h"
+#include "MyString.h"
 #pragma once
+#pragma warning(disable:4996)
 
 void AttributeCollection::free()
 {
@@ -27,12 +29,12 @@ void AttributeCollection::resize()
 	attributes = newCollection;
 }
 
-int AttributeCollection::getAttributeStringLength(int index)
-{
-	if (index > count)
-		return -1;
-	MyString str = attributes[index];
-}
+//int AttributeCollection::getAttributeStringLength(int index)
+//{
+//	if (index > count)
+//		return -1;
+//	MyString str = attributes[index];
+//}
 
 void AttributeCollection::add(Attribute* attribute)
 {
@@ -77,11 +79,11 @@ size_t AttributeCollection::getCount() const
 	return count;
 }
 
-const char* AttributeCollection::getAttributeValue(const char* key) const
+MyString AttributeCollection::getAttributeValue(const MyString& key) const
 {
 	for (int i = 0; i < count; i++)
 	{
-		if (strcmp(attributes[i]->getKey(), key) == 0)
+		if (strcmp(attributes[i]->getKey(), key.c_str()) == 0)
 		{
 			return attributes[i]->getValue();
 		}
@@ -89,13 +91,13 @@ const char* AttributeCollection::getAttributeValue(const char* key) const
 	return nullptr;
 }
 
-bool AttributeCollection::setAttributeValue(const char* key, const char* value)
+bool AttributeCollection::setAttributeValue(const MyString& key, const MyString& value)
 {
 	for (size_t i = 0; i < count; i++)
 	{
-		if (_stricmp(attributes[i]->getKey(), key) == 0)
+		if (_stricmp(attributes[i]->getKey(), key.c_str()) == 0)
 		{
-			attributes[i]->setValue(value);
+			attributes[i]->setValue(value.c_str());
 			return true;
 		}
 	}

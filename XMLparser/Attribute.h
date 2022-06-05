@@ -3,6 +3,10 @@
 class Attribute :public XMLobject
 {
 private:
+
+	MyString key;
+	MyString value;
+
 public:
 	Attribute() = default;
 	Attribute(const MyString& type, const MyString& text);
@@ -13,5 +17,9 @@ public:
 
 	void setValue(const XMLobject& textToSet);
 
+
+
+	MyString getKey() const;
+	MyString getValue() const;
 };
 
