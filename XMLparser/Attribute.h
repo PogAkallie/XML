@@ -15,9 +15,7 @@ public:
 	Attribute& operator=(const Attribute& other);*/
 
 
-	void setValue(const XMLobject& textToSet);
-
-
+	void setValue(const MyString& textToSet);
 
 	MyString getKey() const;
 	MyString getValue() const;

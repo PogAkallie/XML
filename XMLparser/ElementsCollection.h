@@ -2,7 +2,6 @@
 #include "MyString.h"
 #include "Element.h"
 
-class Element;
 class ElementsCollection
 {
 private:
@@ -14,7 +13,7 @@ private:
 	void copyFrom(const ElementsCollection& other);
 	void resize();
 
-	size_t copyToString(const char*, size_t);//??
+	/*size_t copyToString(const char*, size_t);*///??
 	
 	bool isLastElementClosed();
 
@@ -32,27 +31,27 @@ public:
 
 	size_t getCount() const;
 	Element* getElement(size_t position) const;
-	Element* getElement(MyString& type) const;
+	/*Element* getElement(MyString& type) const;*/
 
 	void add(const MyString& type, const MyString& text, const size_t parents = 0);
 	void add(const MyString& type);
 
-	void addAttributeToLastUnclosedEl(const MyString& type, const MyString& value);
-	void addTextToLastUnclosedEl(const MyString& text);
+	/*void addAttributeToLastUnclosedEl(const MyString& type, const MyString& value);
+	void addTextToLastUnclosedEl(const MyString& text);*/
 
 	bool closeLast(const MyString& type);
 
-	void AddElementToCollectionOfAllElementsInFile(Element*);
-	const MyString& GetAttributeValueByOtherAttribute(const MyString&, const MyString&, const MyString&);
+	/*void AddElementToCollectionOfAllElementsInFile(Element*);*/
+	const MyString& GetAttributeValueByOtherAttribute(const MyString& attrKey, const MyString& attrValue, const MyString& keySearched);
 	bool SetAttributeValueByOtherAttribute(const MyString&, const MyString&, const MyString&, const MyString&);
-	const MyString& getElementTextByAttribute(const MyString&, const MyString&);
+	const MyString& getElementTextByAttribute(const MyString& attrKey, const MyString& attrValue); // geetValue ne e razpisana
 	bool deleteAttributeByAttribute(const MyString&, const MyString&, const MyString&);
 
-	Element* findElementByAttribute(const MyString& key, const MyString& value);
-	bool addChildenToElement(const MyString&, const MyString&, const MyString&, const MyString&);
+	Element* findElementByAttribute(const MyString& key, const MyString& value); //ne e misleno
+	bool addChildenToElement(const MyString& attrKey, const MyString& attrValue, const MyString& elementName, const MyString& elementText);
 
-	const MyString& getChildrenString(const MyString& key, const MyString& value) const;
-	const MyString& getNthChildrenString(const MyString& key, const MyString& value, const size_t n);
+	/*const MyString& getChildrenString(const MyString& key, const MyString& value) const;
+	const MyString& getNthChildrenString(const MyString& key, const MyString& value, const size_t n);*/ //sus string
 
 
 };

@@ -125,6 +125,30 @@ size_t MyString::getLength() const
 	return size;
 }
 
+int MyString::compare(const MyString& other) const
+{
+	bool equal = true;
+	for (int i = 0; i < size; i++)
+	{
+		equal = (*this)[i] == other[i];
+	}
+	return equal; //??
+}
+
+char& MyString::operator[](const size_t index)
+{
+	if (index <= size)
+		throw "Index out of range";
+	return str[index];
+}
+
+const char& MyString::operator[](const size_t index) const
+{
+	if (index >= size)
+		throw "Index out of range";
+	return str[index];
+}
+
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {
 	MyString copyOfLeft(lhs);
@@ -164,6 +188,11 @@ bool operator<(const MyString& lhs, const MyString& rhs)
 {
 	return strcmp(lhs.c_str(), rhs.c_str()) < 0;
 
+}
+
+bool operator!=(const MyString& lhs, const MyString& rhs)
+{
+	return !(lhs==rhs);
 }
 
 MyString::MyString(MyString&& otherString)

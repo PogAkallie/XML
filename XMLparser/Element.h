@@ -1,45 +1,51 @@
 #pragma once
+#pragma warning(disable:4996)
 #include "AttributeCollection.h"
 #include "ElementsCollection.h"
+#include "MyString.h"
 
 class Element :public XMLobject
 {
 private:
 
 	AttributeCollection attributeCollection;
-	ElementsCollection* elementColletion;
+	ElementsCollection* elementCollection;
 	size_t numberOfParents;
+	size_t capacity;
 	
-	int setWhiteSpace(int);
+	int setWhiteSpace(int cursor);
 	void CopyElementsCollection(const Element& other);
-	Element* getElement(char* type);
-	bool SetAttributeValue(char* key, char* value);
-	int addKey(bool, int);
+	/*Element* getElement(char* type);*/
+	bool SetAttributeValue(MyString& key, MyString& value);
+	int addKey(bool isStart, int cursor);
 
 	/*int copyStrToStr(const char*, int);*/
 	
 
 public:
+	bool isElementClosed;
 
-	Element(const char*, const char*);
-	Element(const char*);
-	~Element();
+	Element(const MyString& type, const MyString& text);
+	Element(const MyString& type);
 	Element(const Element& other);
 	Element& operator=(const Element& other);
+	~Element();
 
-	bool isElementClosed;
-	Element* getElement(MyString& type) const;
+	/*Element* getElement(MyString& type);*/
 
-	void AddAttribute(const char* type, const char* text);
+	void AddAttribute(const MyString& type, const MyString& text);
+
 	Element* GetLastChild();
-	void SetNumberOfParents(int);
+	void SetNumberOfParents(int number);
 	int NumberOfParents();
-	void AddText(const char* text);
-	const char* GetAttributeValue(const char* key);
+	void AddText(const MyString& text);
+	
 	bool IsElementClosed();
 	void CloseElement();
 	ElementsCollection* getElementsCollection();
-	bool ContainsAttribute(const char* key);
-	void SetAttributeValue(const char* key, const char* value);
-	bool DeleteAttribute(const char* key);
+
+	bool ContainsAttribute(const MyString& key);
+	const MyString& GetAttributeValue(const MyString& key);
+	void SetAttributeValue(const MyString& key, const MyString& value);
+	bool DeleteAttribute(const MyString& key);
 };

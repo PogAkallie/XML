@@ -17,8 +17,6 @@ public:
 
 	XMLobject(const MyString& type, const MyString& text);
 
-
-
 	const MyString& getType() const;
 	const MyString& getText() const;
 

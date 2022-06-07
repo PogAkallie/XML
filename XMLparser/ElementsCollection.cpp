@@ -66,6 +66,73 @@ void ElementsCollection::add(const MyString& type)
 	add(type, "");
 }
 
+bool ElementsCollection::closeLast(const MyString& type)
+{
+	if (isLastElementClosed())
+		return false;
+	else
+	{
+		if (!getElement(count - 1)->getElementsCollection()->isLastElementClosed())
+			return getElement(count - 1)->getElementsCollection()->closeLast(type);
+		else
+		{
+			if (strcmp(getElement(count - 1)->getKey(), type.c_str()) == 0)
+			{
+				getElement(count - 1)->CloseElement();
+				return true;
+			}
+			else
+				return false;
+		}
+	}
+	return false;
+}
+
+const MyString& ElementsCollection::GetAttributeValueByOtherAttribute(const MyString& attrKey, const MyString& attrValue, const MyString& keySearched)
+{
+	Element* searched = findElementByAttribute(attrKey, attrValue);
+	if (searched == nullptr)
+		return nullptr;
+	return searched->GetAttributeValue(keySearched);
+
+}
+
+bool ElementsCollection::SetAttributeValueByOtherAttribute(const MyString& attrKey, const MyString& attrValue, const MyString& attrNameToChangeValue, const MyString& attrValueToChangeValue)
+{
+	Element* searched = findElementByAttribute(attrKey, attrValue);
+	if (searched == nullptr)
+		return false;
+	searched->SetAttributeValue(attrNameToChangeValue, attrValueToChangeValue);
+	return true;
+}
+
+const MyString& ElementsCollection::getElementTextByAttribute(const MyString& attrKey, const MyString& attrValue)
+{
+	Element* searched = findElementByAttribute(attrKey, attrValue);
+	if (searched == nullptr)
+		return "";
+	/*return  searched->getValue();*/
+}
+
+bool ElementsCollection::deleteAttributeByAttribute(const MyString& attrKey, const MyString& attrValue, const MyString& keySearched)
+{
+	Element* searched = findElementByAttribute(attrKey, attrValue);
+	if (searched == nullptr)
+		return false;
+	return searched->DeleteAttribute(keySearched);
+}
+
+bool ElementsCollection::addChildenToElement(const MyString& attrKey, const MyString& attrValue, const MyString& elementName, const MyString& elementText)
+{
+	Element* searched = findElementByAttribute(attrKey, attrValue);
+	if (searched == nullptr)
+		return false;
+	searched->getElementsCollection()->add(elementName, elementText, searched->NumberOfParents() + 1);
+	searched->getElementsCollection()->closeLast(elementName);
+	return true;
+	return false;
+}
+
 void ElementsCollection::free()
 {
 	for (size_t i = 0; i < count; i++)

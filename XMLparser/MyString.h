@@ -39,6 +39,11 @@ public:
 	//my function
 	void resize(size_t newSize); //?
 	size_t getLength() const;
+	int compare(const MyString& other) const;
+
+	//mine
+	char& operator[](const size_t index);
+	const char& operator[](const size_t index) const;
 
 };
 
@@ -47,3 +52,6 @@ MyString operator+(const MyString& lhs, const MyString& rhs);
 bool operator==(const MyString& lhs, const MyString& rhs);
 bool operator<=(const MyString& lhs, const MyString& rhs);
 bool operator<(const MyString& lhs, const MyString& rhs);
+
+//mine
+bool operator!=(const MyString& lhs, const MyString& rhs);
