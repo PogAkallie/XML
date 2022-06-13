@@ -19,5 +19,7 @@ public:
 
 	MyString getKey() const;
 	MyString getValue() const;
+
+
 };
 

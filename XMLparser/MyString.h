@@ -41,9 +41,10 @@ public:
 	size_t getLength() const;
 	int compare(const MyString& other) const;
 
-	//mine
-	char& operator[](const size_t index);
-	const char& operator[](const size_t index) const;
+	const char* getSttr() const;
+
+	char& operator[](size_t index);
+	const char& operator[](size_t index) const;
 
 };
 

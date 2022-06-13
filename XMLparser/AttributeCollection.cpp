@@ -81,14 +81,19 @@ size_t AttributeCollection::getCount() const
 
 MyString AttributeCollection::getAttributeValue(const MyString& key) const
 {
-	for (int i = 0; i < count; i++)
+	/*for (int i = 0; i < count; i++)
 	{
 		if (strcmp(attributes[i]->getKey(), key.c_str()) == 0)
 		{
 			return attributes[i]->getValue();
 		}
 	}
-	return nullptr;
+	return nullptr;*/
+
+	for (int i = 0; i < count; i++)
+	{
+		key.compare(key);
+	}
 }
 
 bool AttributeCollection::setAttributeValue(const MyString& key, const MyString& value)

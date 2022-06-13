@@ -127,25 +127,48 @@ size_t MyString::getLength() const
 
 int MyString::compare(const MyString& other) const
 {
-	bool equal = true;
+	
+	//int minSize = std::min(size, other.size);
+	//for (int i = 0; i < minSize; i++)
+	//{
+	//	if()
+	//	equal = (*this)[i] == other[i];
+	//}
+	//return equal; //??
+
+	/*int minSize = std::min(size, other.size);
 	for (int i = 0; i < size; i++)
 	{
-		equal = (*this)[i] == other[i];
+		if (strcmp(str, other.str) == 0)
+		{
+			return str[i];
+		}
+	}*/
+
+	if (strcmp(str, other.str) == 0)
+	{
+		return true;
 	}
-	return equal; //??
+	return false;
+
 }
 
-char& MyString::operator[](const size_t index)
+const char* MyString::getSttr() const
 {
-	if (index <= size)
-		throw "Index out of range";
+	return str;
+}
+
+char& MyString::operator[]( size_t index)
+{
+	if (index > size)
+		throw std::out_of_range("Out of range!");
 	return str[index];
 }
 
-const char& MyString::operator[](const size_t index) const
+const char& MyString::operator[]( size_t index) const
 {
-	if (index >= size)
-		throw "Index out of range";
+	if (index > size)
+		throw std::out_of_range("Out of range!");
 	return str[index];
 }
 
