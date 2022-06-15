@@ -34,7 +34,7 @@ public:
 
 
 	MyString getAttributeValue(const MyString& key) const;
-	bool setAttributeValue(const MyString& key, const MyString& value);
+	bool setAttributeValue(MyString& key,MyString& value);
 
 	size_t findAttribute(const MyString& key);
 	bool deleteAttribute(const MyString& key);

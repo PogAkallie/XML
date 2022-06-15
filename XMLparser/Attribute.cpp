@@ -1,4 +1,3 @@
-#pragma once
 #include "Attribute.h"
 
 
@@ -22,19 +21,19 @@ Attribute::Attribute(const MyString& type, const MyString& text) : XMLobject(typ
 //	/*size_t length = strlen(textToSet);*/
 //}
 
-void Attribute::setValue(const MyString& textToSet)
-{
-	delete[] this->text;
-	int length = strlen(textToSet);
-	char* temp = new char[length + 1];
-	for (int i = 0; i < length; i++)
-	{
-		temp[i] = textToSet[i];
-	}
-	temp[length] = '\0';
-	this->getText(text) = temp;
-
-}
+//void Attribute::setValue(MyString& textToSet)
+//{
+//	delete[] this->text;
+//	int length = strlen(textToSet.c_str());
+//	char* temp = new char[length + 1];
+//	for (int i = 0; i < length; i++)
+//	{
+//		temp[i] = textToSet[i];
+//	}
+//	temp[length] = '\0';
+//	this->getText(text) = temp;
+//
+//}
 
 MyString Attribute::getKey() const
 {

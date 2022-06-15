@@ -1,6 +1,5 @@
 #include "AttributeCollection.h"
 #include "MyString.h"
-#pragma once
 #pragma warning(disable:4996)
 
 void AttributeCollection::free()
@@ -94,15 +93,16 @@ MyString AttributeCollection::getAttributeValue(const MyString& key) const
 	{
 		key.compare(key);
 	}
+	return key;
 }
 
-bool AttributeCollection::setAttributeValue(const MyString& key, const MyString& value)
+bool AttributeCollection::setAttributeValue(MyString& key,MyString& value)
 {
 	for (size_t i = 0; i < count; i++)
 	{
-		if (_stricmp(attributes[i]->getKey(), key.c_str()) == 0)
+		if (_stricmp(attributes[i]->getKey().c_str(), key.c_str()) == 0)
 		{
-			attributes[i]->setValue(value.c_str());
+			/*attributes[i]->setValue(value.c_str());*/
 			return true;
 		}
 	}

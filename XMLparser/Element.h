@@ -43,6 +43,7 @@ public:
 	bool IsElementClosed();
 	void CloseElement();
 	ElementsCollection* getElementsCollection();
+	const MyString getKey() const;
 
 	bool ContainsAttribute(const MyString& key);
 	const MyString& GetAttributeValue(const MyString& key);

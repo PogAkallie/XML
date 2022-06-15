@@ -1,5 +1,5 @@
 #pragma once
-
+#pragma warning(disable:4996)
 #include <fstream>
 class MyString
 {
@@ -45,6 +45,8 @@ public:
 
 	char& operator[](size_t index);
 	const char& operator[](size_t index) const;
+
+	const char* operator->() const;
 
 };
 

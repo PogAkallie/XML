@@ -172,6 +172,11 @@ const char& MyString::operator[]( size_t index) const
 	return str[index];
 }
 
+const char* MyString::operator->() const
+{
+	return str;
+}
+
 MyString operator+(const MyString& lhs, const MyString& rhs)
 {
 	MyString copyOfLeft(lhs);

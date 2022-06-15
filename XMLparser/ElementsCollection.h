@@ -1,10 +1,12 @@
 #pragma once
 #include "MyString.h"
 #include "Element.h"
+#pragma warning(disable:4996)
 
 class ElementsCollection
 {
 private:
+
 	Element** elements;
 	size_t count;
 	size_t elementCapacity;
@@ -30,10 +32,11 @@ public:
 	~ElementsCollection();
 
 	size_t getCount() const;
-	Element* getElement(size_t position) const;
-	/*Element* getElement(MyString& type) const;*/
+	Element* getElement(int position);
+	/*ElementsCollection& getElement(size_t position) const;*/
+	/*ElementsCollection& getElement(MyString& type) const;*/
 
-	void add(const MyString& type, const MyString& text, const size_t parents = 0);
+	void add(const MyString& type, const MyString& text, int parents=0);
 	void add(const MyString& type);
 
 	/*void addAttributeToLastUnclosedEl(const MyString& type, const MyString& value);

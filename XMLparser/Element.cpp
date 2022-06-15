@@ -128,6 +128,11 @@ ElementsCollection* Element::getElementsCollection()
 	return elementCollection;
 }
 
+const MyString Element::getKey() const
+{
+	return nullptr; //greshno 
+}
+
 bool Element::ContainsAttribute(const MyString& key)
 {
 	int result = attributeCollection.findAttribute(key);
@@ -143,7 +148,7 @@ const MyString& Element::GetAttributeValue(const MyString& key)
 
 void Element::SetAttributeValue(const MyString& key, const MyString& value)
 {
-	attributeCollection.setAttributeValue(key, value);
+	/*attributeCollection.setAttributeValue(key, value);*/
 }
 
 bool Element::DeleteAttribute(const MyString& key)
