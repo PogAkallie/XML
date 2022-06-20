@@ -5,7 +5,7 @@ ElementsCollection::ElementsCollection()
 {
 	count = 0;
 	elementCapacity = 0;
-	elements = new Element * [0];
+	elements = new Element * [8];
 }
 
 ElementsCollection::ElementsCollection(const ElementsCollection& other)
@@ -40,26 +40,13 @@ Element* ElementsCollection::getElement(int position)
 	return elements[position];
 }
 
-//ElementsCollection& ElementsCollection::getElement(size_t position) const
-//{
-//	if (position >= count)
-//		throw "invalid index";
-//	ElementsCollection** newElements = new ElementsCollection * [elementCapacity];
-//	position = elementCapacity;
-//	return newElements[position];
-//}
-
-//ElementsCollection& ElementsCollection::getElement(MyString& type) const
-//{
-//	return;
-//}
 
 void ElementsCollection::add(const MyString& type, const MyString& text, int parents)
 {
 	Element* e;
 	if (count > 0)
 	{
-		if (e->IsElementClosed())
+		if (getElement(count-1)->IsElementClosed())
 		{
 			addCurrentCollection(type, text);
 			getElement(count - 1)->SetNumberOfParents(parents);
@@ -81,6 +68,7 @@ void ElementsCollection::add(const MyString& type)
 	add(type, "");
 }
 
+//it sgould be getKey, not getType but i havent written getKey
 bool ElementsCollection::closeLast(const MyString& type)
 {
 	if (isLastElementClosed())
@@ -91,7 +79,7 @@ bool ElementsCollection::closeLast(const MyString& type)
 			return getElement(count - 1)->getElementsCollection()->closeLast(type);
 		else
 		{
-			if (strcmp(getElement(count - 1)->getKey().c_str(), type.c_str()) == 0)
+			if (strcmp(getElement(count - 1)->getType().c_str(), type.c_str()) == 0)
 			{
 				getElement(count - 1)->CloseElement();
 				return true;
@@ -117,16 +105,17 @@ bool ElementsCollection::SetAttributeValueByOtherAttribute(const MyString& attrK
 	Element* searched = findElementByAttribute(attrKey, attrValue);
 	if (searched == nullptr)
 		return false;
-	searched->SetAttributeValue(attrNameToChangeValue, attrValueToChangeValue);
+	/*searched->SetAttributeValue(attrNameToChangeValue, attrValueToChangeValue);*/
 	return true;
 }
 
+//should be getValue
 const MyString& ElementsCollection::getElementTextByAttribute(const MyString& attrKey, const MyString& attrValue)
 {
 	Element* searched = findElementByAttribute(attrKey, attrValue);
 	if (searched == nullptr)
 		return "";
-	/*return  searched->getValue();*/
+	return  searched->getType();
 }
 
 bool ElementsCollection::deleteAttributeByAttribute(const MyString& attrKey, const MyString& attrValue, const MyString& keySearched)
@@ -142,16 +131,16 @@ Element* ElementsCollection::findElementByAttribute(const MyString& key,const My
 	Element* el;
 	if (count == 0)
 		return nullptr;
-	//for (int i = 0; i < count; i++)
-	//{
-	//	const MyString k = elements[i]->GetAttributeValue(key).c_str();
-	//	if (strcmp(k.c_str(), value == 0)) //==?
-	//		return elements[i];
-	//	else
-	//		el = elements[i]->getElementsCollection()->findElementByAttribute(key, value);
-	//	if (el != nullptr)
-	//		return el;
-	//}
+	for (int i = 0; i < count; i++)
+	{
+		const MyString k = elements[i]->GetAttributeValue(key).c_str();
+		if (k.c_str(), value == nullptr) //==?
+			return elements[i];
+		else
+			el = elements[i]->getElementsCollection()->findElementByAttribute(key, value);
+		if (el != nullptr)
+			return el;
+	}
 	return nullptr;
 }
 
@@ -194,7 +183,8 @@ void ElementsCollection::resize()
 
 bool ElementsCollection::isLastElementClosed()
 {
-	return /*(count==0 || getElement(count-1)->isElementClosed())*/;
+	return true;
+	/*return (count == 0 || getElement(count-1)->isElementClosed());*/
 }
 
 void ElementsCollection::addCurrentCollection(const MyString& type, const MyString& text)

@@ -58,7 +58,7 @@ public:
 
 	/*const MyString& Children(const MyString&);
 	const MyString& Child(const MyString&, const int);*/
-	const MyString& addChild(const MyString&, const MyString& , const MyString&);
+	/*const MyString& addChild(const MyString&, const MyString& , const MyString&);*/
 
 
 

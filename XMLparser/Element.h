@@ -13,11 +13,11 @@ private:
 	size_t numberOfParents;
 	size_t capacity;
 	
-	int setWhiteSpace(int cursor);
+	/*int setWhiteSpace(int cursor);*/
 	void CopyElementsCollection(const Element& other);
 	/*Element* getElement(char* type);*/
 	bool SetAttributeValue(MyString& key, MyString& value);
-	int addKey(bool isStart, int cursor);
+	/*int addKey(bool isStart, int cursor);*/
 
 	/*int copyStrToStr(const char*, int);*/
 	
@@ -43,10 +43,10 @@ public:
 	bool IsElementClosed();
 	void CloseElement();
 	ElementsCollection* getElementsCollection();
-	const MyString getKey() const;
+	/*const MyString getKey() const;*/
 
 	bool ContainsAttribute(const MyString& key);
 	const MyString& GetAttributeValue(const MyString& key);
-	void SetAttributeValue(const MyString& key, const MyString& value);
+	/*void SetAttributeValue(const MyString& key, const MyString& value);*/
 	bool DeleteAttribute(const MyString& key);
 };

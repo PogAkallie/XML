@@ -27,9 +27,4 @@ public:
 
 	void setCapacity(size_t newCapacity);
 
-	///*virtual*/ void createString() = 0;
-
-
-
-
 };

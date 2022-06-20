@@ -5,7 +5,7 @@
 void AttributeCollection::free()
 {
 	for (size_t i = 0; i < count; i++)
-		delete attributes[i];
+	{ delete attributes[i]; }
 	delete[] attributes;
 }
 
@@ -16,7 +16,9 @@ void AttributeCollection::copyFrom(const AttributeCollection& other)
 	capacity = other.capacity;
 
 	for (size_t i = 0; i < count; i++)
+	{
 		attributes[i] = other.attributes[i];
+	}
 }
 
 void AttributeCollection::resize()
@@ -28,13 +30,7 @@ void AttributeCollection::resize()
 	attributes = newCollection;
 }
 
-//int AttributeCollection::getAttributeStringLength(int index)
-//{
-//	if (index > count)
-//		return -1;
-//	MyString str = attributes[index];
-//}
-
+//adding attribute
 void AttributeCollection::add(Attribute* attribute)
 {
 	if (count == capacity)
@@ -48,8 +44,6 @@ AttributeCollection::AttributeCollection()
 	count = 0;
 	capacity = 0;
 	attributes = new Attribute * [8];
-	string = nullptr;
-	stringCapacity = 300;
 }
 
 AttributeCollection& AttributeCollection::operator=(const AttributeCollection& other)
@@ -67,6 +61,7 @@ AttributeCollection::~AttributeCollection()
 	free();
 }
 
+//adding text and type
 void AttributeCollection::add(const MyString& type, const MyString& text)
 {
 	Attribute* attribute = new Attribute(type, text);
@@ -80,20 +75,11 @@ size_t AttributeCollection::getCount() const
 
 MyString AttributeCollection::getAttributeValue(const MyString& key) const
 {
-	/*for (int i = 0; i < count; i++)
-	{
-		if (strcmp(attributes[i]->getKey(), key.c_str()) == 0)
-		{
-			return attributes[i]->getValue();
-		}
-	}
-	return nullptr;*/
-
 	for (int i = 0; i < count; i++)
 	{
 		key.compare(key);
 	}
-	return key;
+	return "";
 }
 
 bool AttributeCollection::setAttributeValue(MyString& key,MyString& value)
@@ -106,6 +92,16 @@ bool AttributeCollection::setAttributeValue(MyString& key,MyString& value)
 			return true;
 		}
 	}
+	return false;
+}
+
+size_t AttributeCollection::findAttribute(const MyString& key)
+{
+	return 0;
+}
+
+bool AttributeCollection::deleteAttribute(const MyString& key)
+{
 	return false;
 }
 

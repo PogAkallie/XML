@@ -1,7 +1,6 @@
 #pragma once
 #include "MyString.h"
 #include "Element.h"
-#pragma warning(disable:4996)
 
 class ElementsCollection
 {
@@ -14,8 +13,6 @@ private:
 	void free();
 	void copyFrom(const ElementsCollection& other);
 	void resize();
-
-	/*size_t copyToString(const char*, size_t);*///??
 	
 	bool isLastElementClosed();
 
@@ -33,8 +30,6 @@ public:
 
 	size_t getCount() const;
 	Element* getElement(int position);
-	/*ElementsCollection& getElement(size_t position) const;*/
-	/*ElementsCollection& getElement(MyString& type) const;*/
 
 	void add(const MyString& type, const MyString& text, int parents=0);
 	void add(const MyString& type);

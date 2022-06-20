@@ -15,7 +15,7 @@ public:
 	Attribute& operator=(const Attribute& other);*/
 
 
-	void setValue(MyString& textToSet);
+	/*void setValue(MyString& textToSet);*/
 
 	MyString getKey() const;
 	MyString getValue() const;
